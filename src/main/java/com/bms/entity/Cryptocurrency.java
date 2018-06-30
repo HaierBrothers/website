@@ -27,8 +27,8 @@ public class Cryptocurrency {
     /**
      * 图片地址
      */
-    @Column(name = "pic_url")
-    private String picUrl;
+    @Column(name = "logo_url")
+    private String logoUrl;
 
     /**
      * 标题中文
@@ -64,6 +64,9 @@ public class Cryptocurrency {
      */
     @Column(name = "content_en")
     private String contentEn;
+
+    @Column(name = "dialog_logo_url")
+    private String dialogLogoUrl;
 
     /**
      * @return sid
@@ -113,24 +116,6 @@ public class Cryptocurrency {
      */
     public void setLogoNameEn(String logoNameEn) {
         this.logoNameEn = logoNameEn;
-    }
-
-    /**
-     * 获取图片地址
-     *
-     * @return pic_url - 图片地址
-     */
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    /**
-     * 设置图片地址
-     *
-     * @param picUrl 图片地址
-     */
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
     }
 
     /**
@@ -249,5 +234,21 @@ public class Cryptocurrency {
      */
     public void setContentEn(String contentEn) {
         this.contentEn = contentEn;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getDialogLogoUrl() {
+        return dialogLogoUrl;
+    }
+
+    public void setDialogLogoUrl(String dialogLogoUrl) {
+        this.dialogLogoUrl = dialogLogoUrl;
     }
 }

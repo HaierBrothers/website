@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CryptocurrencyMapper extends CommonMapper<Cryptocurrency> {
+
+    int insertOrUpdate(Cryptocurrency cryptocurrency);
 }

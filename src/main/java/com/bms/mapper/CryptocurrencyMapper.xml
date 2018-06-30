@@ -17,4 +17,41 @@
     <result column="content_cn" property="contentCn" jdbcType="LONGVARCHAR" />
     <result column="content_en" property="contentEn" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <update id="insertOrUpdate" parameterType="com.bms.entity.Cryptocurrency">
+
+    INSERT INTO `club`.`cryptocurrency`
+    (
+    `logo_name_cn`,
+    `logo_name_en`,
+    `logo_url`,
+    `title_cn`,
+    `title_en`,
+    `content_cn`,
+    `content_en`,
+    `website`,
+    `dialog_logo_url`)
+    VALUES
+    (
+    #{logoNameCn },
+    #{logoNameEn },
+    #{logoUrl },
+    #{titleCn },
+    #{titleEn },
+    #{contentCn },
+    #{contentEn },
+    #{website },
+    #{dialogLogoUrl }
+    )
+    ON DUPLICATE KEY UPDATE
+    `logo_name_cn` = #{logoNameCn },
+    `logo_name_en` = #{logoNameEn },
+    `logo_url` = #{logoUrl },
+    `title_cn` = #{titleCn },
+    `title_en` = #{titleEn },
+    `content_cn` = #{contentCn },
+    `content_en` = #{contentEn },
+    `website` = #{website },
+    `dialog_logo_url` = #{dialogLogoUrl }
+
+  </update>
 </mapper>
