@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bms.mapper.CryptocurrencyMapper" >
+  <resultMap id="BaseResultMap" type="com.bms.entity.Cryptocurrency" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="logo_name_cn" property="logoNameCn" jdbcType="VARCHAR" />
+    <result column="logo_name_en" property="logoNameEn" jdbcType="VARCHAR" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="title_cn" property="titleCn" jdbcType="VARCHAR" />
+    <result column="title_en" property="titleEn" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="content_cn" property="contentCn" jdbcType="LONGVARCHAR" />
+    <result column="content_en" property="contentEn" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

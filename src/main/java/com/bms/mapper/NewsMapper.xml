@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bms.mapper.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.bms.entity.News" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="news_sort" property="newsSort" jdbcType="INTEGER" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="title_cn" property="titleCn" jdbcType="VARCHAR" />
+    <result column="content_cn" property="contentCn" jdbcType="VARCHAR" />
+    <result column="full_article" property="fullArticle" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="title_en" property="titleEn" jdbcType="VARCHAR" />
+    <result column="content_en" property="contentEn" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
