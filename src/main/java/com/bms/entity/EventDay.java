@@ -37,7 +37,9 @@ public class EventDay {
     /**
      * 标题
      */
-    private String title;
+    private String titleCn;
+
+    private String titleEn;
 
     /**
      * 颜色 1:红色;2:绿色;3:蓝色
@@ -53,7 +55,12 @@ public class EventDay {
     /**
      *  内容
      */
-    private String content;
+    private String contentCn;
+    private String contentEn;
+
+    private Integer row;
+
+    private Integer col;
 
     /**
      * @return sid
@@ -155,23 +162,6 @@ public class EventDay {
         this.status = status;
     }
 
-    /**
-     * 获取标题
-     *
-     * @return title - 标题
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * 设置标题
-     *
-     * @param title 标题
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     /**
      * 获取颜色 1:红色;2:绿色;3:蓝色
@@ -209,21 +199,52 @@ public class EventDay {
         this.picUrl = picUrl;
     }
 
-    /**
-     * 获取 内容
-     *
-     * @return content -  内容
-     */
-    public String getContent() {
-        return content;
+
+    public Integer getRow() {
+        return row;
     }
 
-    /**
-     * 设置 内容
-     *
-     * @param content  内容
-     */
-    public void setContent(String content) {
-        this.content = content;
+    public void setRow(Integer row) {
+        this.row = row;
+    }
+
+    public Integer getCol() {
+        return col;
+    }
+
+    public void setCol(Integer col) {
+        this.col = col;
+    }
+
+    public String getTitleCn() {
+        return titleCn;
+    }
+
+    public void setTitleCn(String titleCn) {
+        this.titleCn = titleCn;
+    }
+
+    public String getTitleEn() {
+        return titleEn;
+    }
+
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
+    }
+
+    public String getContentCn() {
+        return contentCn;
+    }
+
+    public void setContentCn(String contentCn) {
+        this.contentCn = contentCn;
+    }
+
+    public String getContentEn() {
+        return contentEn;
+    }
+
+    public void setContentEn(String contentEn) {
+        this.contentEn = contentEn;
     }
 }

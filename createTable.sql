@@ -26,18 +26,23 @@ PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `event_day` (
-`sid` bigint(20) NOT NULL AUTO_INCREMENT,
-`month_id` bigint(20) DEFAULT NULL,
-`day` varchar(2) DEFAULT NULL COMMENT '日期 02',
-`time` varchar(2) DEFAULT NULL COMMENT '时间 09',
-`type` int(1) DEFAULT NULL COMMENT '类型 小文本:1;大文本:2;小图:3;大图:4',
-`status` int(1) DEFAULT NULL COMMENT '1删除;0正常',
-`title` varchar(100) DEFAULT NULL COMMENT '标题',
-`content` text COMMENT ' 内容',
-`color` int(2) DEFAULT NULL COMMENT '颜色 1:红色;2:绿色;3:蓝色',
-`pic_url` varchar(100) DEFAULT NULL COMMENT '图片地址',
-PRIMARY KEY (`sid`)
+  `sid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `month_id` bigint(20) DEFAULT NULL,
+  `day` varchar(2) DEFAULT NULL COMMENT '日期 02',
+  `time` varchar(2) DEFAULT NULL COMMENT '时间 09',
+  `type` int(1) DEFAULT NULL COMMENT '类型 小文本:1;大文本:2;小图:3;大图:4',
+  `status` int(1) DEFAULT NULL COMMENT '1删除;0正常',
+  `title_cn` varchar(100) DEFAULT NULL COMMENT '标题',
+  `content_cn` text COMMENT ' 内容',
+  `color` int(2) DEFAULT NULL COMMENT '颜色 1:红色;2:绿色;3:蓝色',
+  `pic_url` varchar(100) DEFAULT NULL COMMENT '图片地址',
+  `row` int(11) DEFAULT NULL COMMENT '行',
+  `col` int(11) DEFAULT NULL COMMENT '列',
+  `title_en` varchar(100) DEFAULT NULL,
+  `content_en` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE `event_month` (
 `sid` bigint(20) NOT NULL AUTO_INCREMENT,
