@@ -16,4 +16,36 @@
     <result column="title_en" property="titleEn" jdbcType="VARCHAR" />
     <result column="content_en" property="contentEn" jdbcType="VARCHAR" />
   </resultMap>
+  <update id="insertOrUpdate" parameterType="com.bms.entity.News">
+
+    INSERT INTO `club`.`news`
+    (
+    `news_sort`,
+    `pic_url`,
+    `title_cn`,
+    `content_cn`,
+    `full_article`,
+    `website`,
+    `title_en`,
+    `content_en`)
+    VALUES
+    (
+    #{newsSort },
+    #{picUrl },
+    #{titleCn },
+    #{contentCn },
+    #{fullArticle },
+    #{website },
+    #{titleEn },
+    #{contentEn })
+    ON DUPLICATE KEY UPDATE
+    `pic_url` = #{picUrl },
+    `title_cn` = #{titleCn },
+    `content_cn` = #{contentCn },
+    `full_article` = #{fullArticle },
+    `website` = #{website },
+    `title_en` = #{titleEn },
+    `content_en` = #{contentEn }
+
+  </update>
 </mapper>

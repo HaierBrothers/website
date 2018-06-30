@@ -11,4 +11,18 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <update id="insertOrUpdate" parameterType="com.bms.entity.Banner">
+    INSERT INTO `club`.`banner`
+    (
+    `pic_url`,
+    `pic_sort`)
+    VALUES
+    (
+    #{pic_url},
+    #{picSort})
+    ON DUPLICATE KEY UPDATE
+    pic_url = #{picUrl},
+    pic_sort = #{picSort}
+
+   </update>
 </mapper>
