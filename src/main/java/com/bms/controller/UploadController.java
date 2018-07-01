@@ -1,15 +1,18 @@
 package com.bms.controller;
 
-import com.bms.base.RespMsg;
-import com.bms.base.RespStatus;
 import com.bms.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zhangguodong
@@ -21,21 +24,22 @@ public class UploadController {
     @Autowired
     private OSSClientUtil ossClientUtil;
 
-    @RequestMapping("upload")
+    @RequestMapping(value = "/upload",method = RequestMethod.POST)
     @ResponseBody
-    public RespMsg upload(HttpServletRequest request){
+    public Map<String,String> upload(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        Map<String,String> result = new HashMap<>();
         try {
-            String logoUrl = uploadPic(request);
-            return RespMsg.buildSuccessRespMsg(logoUrl);
+            String logoUrl = uploadPic(file);
+            result.put("type","success");
+            result.put("logoUrl",logoUrl);
         }catch (Exception e){
             e.printStackTrace();
-            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
+            result.put("type","error");
         }
+        return result;
     }
 
-    private String uploadPic(HttpServletRequest request){
-        //FIXME 文件上传之后访问路径未知
-        MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-        return ossClientUtil.uploadImg2Oss(multipartHttpServletRequest.getFile("file"));
+    private String uploadPic(MultipartFile file){
+        return ossClientUtil.uploadImg2Oss(file);
     }
 }
