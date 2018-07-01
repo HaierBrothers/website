@@ -52,7 +52,7 @@ UNIQUE KEY `month_unique` (`month`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `news` (
-`sid` bigint(20) NOT NULL,
+`sid` bigint(20) NOT NULL AUTO_INCREMENT,
 `news_sort` int(11) DEFAULT NULL COMMENT '新闻排序',
 `pic_url` varchar(255) DEFAULT NULL COMMENT '图片地址',
 `title_cn` varchar(255) DEFAULT NULL COMMENT '标题',
