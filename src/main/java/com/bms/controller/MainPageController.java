@@ -1,5 +1,7 @@
 package com.bms.controller;
 
+import com.bms.base.RespMsg;
+import com.bms.base.RespStatus;
 import com.bms.entity.Banner;
 import com.bms.entity.News;
 import com.bms.service.BannerService;
@@ -36,25 +38,22 @@ public class MainPageController {
 
     @RequestMapping("submitBanner")
     @ResponseBody
-    public Map<String,String> submitBanner(Integer sort,String url){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg submitBanner(Integer sort,String url){
         try {
             Banner banner = new Banner();
             banner.setPicSort(sort);
             banner.setPicUrl(url);
-            boolean isSuccess = bannerService.insertOrUpdate(banner);
-            result.put("type",isSuccess?"success":"error");
+            bannerService.insertOrUpdate(banner);
         }catch (Exception e){
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
+        return RespMsg.buildSuccessRespMsg(null);
     }
 
     @RequestMapping("submitNews")
     @ResponseBody
-    public Map<String,String> submitNews(Integer sort,String titleEn,String titleCn,
+    public RespMsg submitNews(Integer sort,String titleEn,String titleCn,
                                          String contentEn,String contentCn,String bannerUrl,String fullArticle,String website ){
-        Map<String,String> result = new HashMap<>();
         try {
 
             News news = new News();
@@ -66,14 +65,23 @@ public class MainPageController {
             news.setTitleCn(titleCn);
             news.setTitleEn(titleEn);
             news.setWebsite(website);
-            boolean isSuccess = newsService.insertOrUpdate(news);
-            result.put("type",isSuccess?"success":"error");
+            newsService.insertOrUpdate(news);
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
 
-        return result;
+        return RespMsg.buildSuccessRespMsg(null);
 
+    }
+
+    @RequestMapping("getAllBanner")
+    @ResponseBody
+    public RespMsg<Banner> getBanner(){
+        List<Banner> bannerList = bannerService.getAllBanner();
+        if(!CollectionUtils.isEmpty(bannerList)){
+            bannerList.stream().sorted(Comparator.comparing(Banner::getPicSort)).collect(Collectors.toList());
+        }
+        return RespMsg.buildSuccessRespMsg(bannerList);
     }
 }

@@ -1,5 +1,7 @@
 package com.bms.controller;
 
+import com.bms.base.RespMsg;
+import com.bms.base.RespStatus;
 import com.bms.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author zhangguodong
@@ -23,20 +23,18 @@ public class UploadController {
 
     @RequestMapping("upload")
     @ResponseBody
-    public Map<String,String> upload(HttpServletRequest request){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg upload(HttpServletRequest request){
         try {
             String logoUrl = uploadPic(request);
-            result.put("type","success");
-            result.put("logoUrl",logoUrl);
+            return RespMsg.buildSuccessRespMsg(logoUrl);
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
     }
 
     private String uploadPic(HttpServletRequest request){
+        //FIXME 文件上传之后访问路径未知
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
         return ossClientUtil.uploadImg2Oss(multipartHttpServletRequest.getFile("file"));
     }

@@ -1,19 +1,21 @@
 package com.bms.controller;
 
+import com.bms.base.RespMsg;
+import com.bms.base.RespStatus;
+import com.bms.controller.req.CryptocurrencyReq;
 import com.bms.entity.Cryptocurrency;
 import com.bms.service.CryptocurrencyService;
 import com.bms.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -37,33 +39,28 @@ public class CryptocurrencyController {
 
     @RequestMapping("submit")
     @ResponseBody
-    public Map<String,String> submit(String logoNameCn,String logoNameEn ,String titleCn
-            ,String titleEn,String contentCn,String contentEn,String website
-            ,String logoUrl,String dialogLogoUrl){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg submit(@RequestBody CryptocurrencyReq cryptocurrencyReq){
 
         try {
             Cryptocurrency cryptocurrency = new Cryptocurrency();
-            cryptocurrency.setContentCn(contentCn);
-            cryptocurrency.setContentEn(contentEn);
-            cryptocurrency.setLogoNameCn(logoNameCn);
-            cryptocurrency.setLogoNameEn(logoNameEn);
-            cryptocurrency.setLogoUrl(logoUrl);
-            cryptocurrency.setDialogLogoUrl(dialogLogoUrl);
-            cryptocurrency.setTitleCn(titleCn);
-            cryptocurrency.setTitleEn(titleEn);
-            cryptocurrency.setWebsite(website);
+            cryptocurrency.setContentCn(cryptocurrencyReq.getContentCn());
+            cryptocurrency.setContentEn(cryptocurrencyReq.getContentEn());
+            cryptocurrency.setLogoNameCn(cryptocurrencyReq.getLogoNameCn());
+            cryptocurrency.setLogoNameEn(cryptocurrencyReq.getLogoNameEn());
+            cryptocurrency.setLogoUrl(cryptocurrencyReq.getLogoUrl());
+            cryptocurrency.setDialogLogoUrl(cryptocurrencyReq.getDialogLogoUrl());
+            cryptocurrency.setTitleCn(cryptocurrencyReq.getTitleCn());
+            cryptocurrency.setTitleEn(cryptocurrencyReq.getTitleEn());
+            cryptocurrency.setWebsite(cryptocurrencyReq.getWebsite());
 
-            boolean isSuccess = cryptocurrencyService.insertOrUpdate(cryptocurrency);
-            result.put("type",isSuccess?"success":"error");
+            cryptocurrencyService.insertOrUpdate(cryptocurrency);
+            return RespMsg.buildSuccessRespMsg(null);
+
 
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
-
-
     }
     @RequestMapping("getHis")
     public String getHis(HttpServletRequest request){

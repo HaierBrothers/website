@@ -1,5 +1,7 @@
 package com.bms.controller;
 
+import com.bms.base.RespMsg;
+import com.bms.base.RespStatus;
 import com.bms.controller.req.AddEventDayReq;
 import com.bms.entity.EventDay;
 import com.bms.entity.EventMonth;
@@ -9,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author zhangguodong
@@ -27,26 +27,23 @@ public class EventController {
 
     @RequestMapping("addMonth")
     @ResponseBody
-    public Map<String,String> addMonth(@RequestParam String month){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg addMonth(@RequestParam String month){
         try {
-
             EventMonth eventMonth = new EventMonth();
             eventMonth.setMonth(month);
             eventMonthMapper.insertUseGeneratedKeys(eventMonth);
-            result.put("type","success");
-            result.put("sid",eventMonth.getSid().toString());
+            //返回月份主键，前端进行存储，保存的时候再传递回来
+            return RespMsg.buildSuccessRespMsg(eventMonth.getSid());
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
     }
 
+    /**如果传递了sid修改，如果没有新增**/
     @PostMapping("updateEventDay")
     @ResponseBody
-    public Map<String,String> updateEventDay(@RequestBody AddEventDayReq addEventDayReq){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg updateEventDay(@RequestBody AddEventDayReq addEventDayReq){
         try {
             EventDay eventDay = new EventDay();
             eventDay.setSid(addEventDayReq.getSid());
@@ -68,33 +65,31 @@ public class EventController {
             }else{
                 eventDayMapper.insertUseGeneratedKeys(eventDay);
             }
-            result.put("type","success");
-            result.put("sid",eventDay.getSid().toString());
+            //主键返回给前端，调用修改的时候传递过来
+            return RespMsg.buildSuccessRespMsg(eventDay.getSid());
+
 
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
     }
 
 
     @RequestMapping("delEventDay")
     @ResponseBody
-    public Map<String,String> delEventDay(Long sid){
-        Map<String,String> result = new HashMap<>();
+    public RespMsg delEventDay(Long sid){
         try {
             EventDay eventDay = new EventDay();
             eventDay.setSid(sid);
             eventDay.setStatus(1);
             eventDayMapper.updateByPrimaryKeySelective(eventDay);
-            result.put("type","success");
-            result.put("sid",eventDay.getSid().toString());
+            return RespMsg.buildSuccessRespMsg(eventDay.getSid());
+
         }catch (Exception e){
             e.printStackTrace();
-            result.put("type","error");
+            return RespMsg.buildFailedRespMsg(RespStatus.INTERNAL_SERVER_ERROR.code());
         }
-        return result;
     }
 
 
