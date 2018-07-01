@@ -5,7 +5,6 @@ import com.bms.base.RespStatus;
 import com.bms.controller.req.CryptocurrencyReq;
 import com.bms.entity.Cryptocurrency;
 import com.bms.service.CryptocurrencyService;
-import com.bms.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -25,9 +24,6 @@ import java.util.stream.Collectors;
 @RequestMapping("cryptocurrency")
 @Controller
 public class CryptocurrencyController {
-
-    @Autowired
-    private OSSClientUtil ossClientUtil;
 
     @Autowired
     private CryptocurrencyService cryptocurrencyService;

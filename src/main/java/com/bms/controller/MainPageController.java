@@ -3,14 +3,18 @@ package com.bms.controller;
 import com.bms.base.RespMsg;
 import com.bms.base.RespStatus;
 import com.bms.entity.Banner;
+import com.bms.entity.Cryptocurrency;
 import com.bms.entity.News;
 import com.bms.service.BannerService;
+import com.bms.service.CryptocurrencyService;
 import com.bms.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,16 +27,18 @@ import java.util.stream.Collectors;
 public class MainPageController {
     @Autowired
     private BannerService bannerService;
-
+    @Autowired
+    private CryptocurrencyService cryptocurrencyService;
 
     @Autowired
     private NewsService newsService;
     @RequestMapping("list")
-    public String list(){
+    public String list(HttpServletRequest request){
         List<Banner> bannerList = bannerService.getAllBanner();
         if(!CollectionUtils.isEmpty(bannerList)){
             bannerList = bannerList.stream().sorted(Comparator.comparing(Banner::getPicSort)).collect(Collectors.toList());
         }
+        request.setAttribute("bannerList",bannerList);
         return "";
     }
 
@@ -84,4 +90,25 @@ public class MainPageController {
         }
         return RespMsg.buildSuccessRespMsg(bannerList);
     }
+
+    @RequestMapping("getAllNews")
+    @ResponseBody
+    public RespMsg<News> getAllNews(){
+        List<News> newsList = newsService.getAllNews();
+        if(!CollectionUtils.isEmpty(newsList)){
+            newsList.stream().sorted(Comparator.comparing(News::getNewsSort)).collect(Collectors.toList());
+        }
+        return RespMsg.buildSuccessRespMsg(newsList);
+    }
+
+    @RequestMapping("getAllCryptocurrencys")
+    @ResponseBody
+    public RespMsg<News> getAllCryptocurrencys(){
+        List<Cryptocurrency> cryptocurrencies = cryptocurrencyService.getAll();
+        if(!CollectionUtils.isEmpty(cryptocurrencies)){
+            cryptocurrencies.stream().sorted(Comparator.comparing(Cryptocurrency::getCreateTime)).collect(Collectors.toList());
+        }
+        return RespMsg.buildSuccessRespMsg(cryptocurrencies);
+    }
+
 }
