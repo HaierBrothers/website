@@ -2,12 +2,6 @@ package com.bms.util;
 
 import java.io.Serializable;
 
-/**
- * 封装返回值
- *
- * @auther xinch
- * @create 2018/3/28 9:36
- */
 public class RestModel implements Serializable{
     private long code;
     private String errorDescription = "";

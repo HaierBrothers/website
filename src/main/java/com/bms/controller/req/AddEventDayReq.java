@@ -1,9 +1,5 @@
 package com.bms.controller.req;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 下午2:22
- */
 public class AddEventDayReq {
     private Long sid;
     private Integer color;

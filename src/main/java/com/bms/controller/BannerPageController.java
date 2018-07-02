@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-/**
- * @auther xinch
- * @create 2018/7/1 19:48
- */
 @Controller
 public class BannerPageController {
 

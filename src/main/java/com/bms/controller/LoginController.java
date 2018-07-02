@@ -23,12 +23,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 登陆控制
- *
- * @auther xinch
- * @create 2018/6/30 12:21
- */
 @Controller
 public class LoginController {
 

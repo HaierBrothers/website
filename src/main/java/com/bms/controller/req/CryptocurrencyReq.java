@@ -1,9 +1,5 @@
 package com.bms.controller.req;
 
-/**
- * @author zhangguodong
- * @date 18/7/1 上午9:09
- */
 public class CryptocurrencyReq {
     private String logoNameCn;
     private String logoNameEn;

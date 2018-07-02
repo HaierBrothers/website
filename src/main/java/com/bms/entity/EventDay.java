@@ -42,9 +42,9 @@ public class EventDay {
     private String titleEn;
 
     /**
-     * 颜色 1:红色;2:绿色;3:蓝色
+     * 颜色 1:红色;2:绿色;3:蓝色  颜色值
      */
-    private Integer color;
+    private String color;
 
     /**
      * 图片地址
@@ -162,22 +162,11 @@ public class EventDay {
         this.status = status;
     }
 
-
-    /**
-     * 获取颜色 1:红色;2:绿色;3:蓝色
-     *
-     * @return color - 颜色 1:红色;2:绿色;3:蓝色
-     */
-    public Integer getColor() {
+    public String getColor() {
         return color;
     }
 
-    /**
-     * 设置颜色 1:红色;2:绿色;3:蓝色
-     *
-     * @param color 颜色 1:红色;2:绿色;3:蓝色
-     */
-    public void setColor(Integer color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

@@ -14,10 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 下午12:23
- */
 @RequestMapping("upload")
 @Controller
 public class UploadController {

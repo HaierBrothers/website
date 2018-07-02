@@ -19,10 +19,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 上午11:55
- */
 @RequestMapping("cryptocurrency")
 @Controller
 public class CryptocurrencyController {

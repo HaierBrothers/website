@@ -7,10 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 上午11:42
- */
 @Service
 public class NewsService {
 

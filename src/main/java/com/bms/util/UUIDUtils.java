@@ -7,10 +7,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
-/**
- * @auther xinch
- * @create 2018/7/1 15:32
- */
 public class UUIDUtils {
 
 

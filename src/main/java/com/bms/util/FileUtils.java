@@ -20,10 +20,6 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 
-/**
- * @auther xinch
- * @create 2018/7/1 15:27
- */
 public class FileUtils {
 
     /**
@@ -210,11 +206,6 @@ public class FileUtils {
 
 
     public static void main(String[] args) {
-//		E:\root\panda\fileUploads\ffb53d2a941b4bd69f2204af9b1a068a15120Q42531-1.jpg
-//		‪E:\root\panda\fileUploads\ffb53d2a941b4bd69f2204af9b1a068a15120Q42531-1.jpg
-//		‪E:\root\panda\fileUploads\ffb53d2a941b4bd69f2204af9b1a068a15120Q42531-1.jpg
-//		E:/root/panda/fileUploads/2017-05-09/min-be3273be7d3d4c3c94fbd47c9bf2a449-15120Q42531-1.jpg
-//								  E:\root\panda\fileUploads\2017-05-09\min-eaa17c10bec844478717127ae0cd25c5-15120Q42531-1.jpg
         String path = new String("E:/root/panda/fileUploads/2017-05-09/min-eaa17c10bec844478717127ae0cd25c5-15120Q42531-1.jpg");
         File file = new File(path);
         System.out.println(file.exists());

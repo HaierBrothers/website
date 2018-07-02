@@ -15,7 +15,6 @@ import java.util.Properties;
  * 同时又提供了上下文properties访问的功能。
  * 于是在Spring配置文件中把PropertyPlaceholderConfigurer
  * 改成CustomizedPropertyConfigurer
- * @author xinqch
  */
 public class PropertiesUtils extends PropertyPlaceholderConfigurer {
 

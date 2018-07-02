@@ -7,10 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 下午12:10
- */
 @Service
 public class CryptocurrencyService {
     @Autowired

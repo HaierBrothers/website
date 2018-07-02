@@ -20,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * @author zhangguodong
- * @date 18/6/30 上午11:08
- */
 @Controller
 @RequestMapping("mainPage")
 public class MainPageController {

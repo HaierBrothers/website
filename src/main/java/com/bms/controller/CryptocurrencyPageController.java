@@ -12,12 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 上传列表
- *
- * @auther xinch
- * @create 2018/7/1 3:56
- */
 @Controller
 public class CryptocurrencyPageController {
     @Autowired

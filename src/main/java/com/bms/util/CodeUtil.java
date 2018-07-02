@@ -1,12 +1,5 @@
 package com.bms.util;
 
-/**
- * 验证码工具类
- *
- * @auther xinch
- * @create 2018/6/30 12:29
- */
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

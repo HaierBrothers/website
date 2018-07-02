@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @auther xinch
- * @create 2018/7/1 3:54
- */
 @Controller
 public class EventsPageController {
 
