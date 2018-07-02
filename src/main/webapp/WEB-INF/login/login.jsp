@@ -6,11 +6,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
-	<link rel="stylesheet" href="../../public/css/reset.css" />
-	<link rel="stylesheet" href="../../public/css/login.css" />
-        <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-        <script type="text/javascript" src="../../public/js/login.js"></script>
-        <script type="text/javascript" src="../../public/js/jquery.json.min.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/public/css/reset.css" />
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/public/css/login.css" />
+        <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/login.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/jquery.json.min.js"></script>
 
 </head>
 <body>
@@ -96,13 +96,13 @@
                         $('.jsrz_main_check').html("服务异常，请稍后再试");
                         $(".jsrz_main_check").css("color","red");
 					}else{
-                        var data = jQuery.parseJSON(result);
-                        if (data.code == 0) {
+//                        var data = jQuery.parseJSON(result);
+                        if (result.code == 0) {
                             $('.jsrz_main_check').html('登陆成功');
                             $(".jsrz_main_check").css("color","green");
                             window.location.href = "/toCryptocurrency";
                         } else {
-                            $('.jsrz_main_check').html(data.errorDescription);
+                            $('.jsrz_main_check').html(result.errorDescription);
                             $(".jsrz_main_check").css("color","red");
                         }
 					}
@@ -116,6 +116,6 @@
         });
 
 	</script>
-	<script type="text/javascript" src="../../public/js/canvas-particle.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/public/js/canvas-particle.js"></script>
 </body>
 </html>

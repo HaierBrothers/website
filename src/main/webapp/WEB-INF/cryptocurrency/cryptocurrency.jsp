@@ -18,19 +18,19 @@
     <!--[if lt IE 9] -->
     <!-- Css files -->
     <!-- Icons -->
-    <link href="../../public/css/icons.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/icons.css" rel="stylesheet" />
     <!-- jQueryUI -->
-    <link href="../../public/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
     <!-- Bootstrap stylesheets (included template modifications) -->
-    <link href="../../public/css/bootstrap.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/bootstrap.css" rel="stylesheet" />
     <!-- Plugins stylesheets (all plugin custom css) -->
-    <link href="../../public/css/plugins.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/plugins.css" rel="stylesheet" />
     <!-- Main stylesheets (template main css file) -->
-    <link href="../../public/css/main.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/main.css" rel="stylesheet" />
     <!-- Custom stylesheets ( Put your own changes here ) -->
-    <link href="../../public/css/custom.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/public/css/custom.css" rel="stylesheet" />
     <!-- Fav and touch icons -->
-    <link rel="icon" href="../../public/images/ico/favicon.ico" type="image/png">
+    <link rel="icon" href="<%=request.getContextPath()%>/public/images/ico/favicon.ico" type="image/png">
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
     <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
@@ -51,7 +51,7 @@
 
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown">
-                            <img class="user-avatar" src="../../public/images/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
+                            <img class="user-avatar" src="<%=request.getContextPath()%>/public/images/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
                         <ul class="dropdown-menu right" role="menu">
                             <li><a href="profile.html"><i class="st-user"></i> Profile</a>
                             </li>
@@ -312,61 +312,61 @@
 <!-- End #content -->
 <!-- Javascripts -->
 <!-- Load pace first -->
-<script src="../../public/plugins/core/pace/pace.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/core/pace/pace.min.js"></script>
 <!-- Important javascript libs(put in all pages) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <%--<script>--%>
-    <%--window.jQuery || document.write('<script src="../../public/js/libs/jquery-2.1.1.min.js">\x3C/script>')--%>
+    <%--window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-2.1.1.min.js">\x3C/script>')--%>
 <%--</script>--%>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
-    window.jQuery || document.write('<script src="../../public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+    window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
 </script>
 <!--[if lt IE 9]>
-<script type="text/javascript" src="../../public/js/libs/excanvas.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/public/js/libs/excanvas.min.js"></script>
 <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<script type="text/javascript" src="../../public/js/libs/respond.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/public/js/libs/respond.min.js"></script>
 <![endif]-->
 <!-- Bootstrap plugins -->
-<script src="../../public/js/bootstrap/bootstrap.js"></script>
+<script src="<%=request.getContextPath()%>/public/js/bootstrap/bootstrap.js"></script>
 <!-- Core plugins ( not remove ever) -->
 <!-- Handle responsive view functions -->
-<script src="../../public/js/jRespond.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/js/jRespond.min.js"></script>
 <!-- Custom scroll for sidebars,tables and etc. -->
-<script src="../../public/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../../public/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
 <!-- Resize text area in most pages -->
-<script src="../../public/plugins/forms/autosize/jquery.autosize.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/forms/autosize/jquery.autosize.js"></script>
 <!-- Proivde quick search for many widgets -->
-<script src="../../public/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/core/quicksearch/jquery.quicksearch.js"></script>
 <!-- Bootbox confirm dialog for reset postion on panels -->
-<script src="../../public/plugins/ui/bootbox/bootbox.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/ui/bootbox/bootbox.js"></script>
 <!-- Other plugins ( load only nessesary plugins for every page) -->
-<script src="../../public/plugins/core/moment/moment.min.js"></script>
-<script src="../../public/plugins/charts/sparklines/jquery.sparkline.js"></script>
-<script src="../../public/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="../../public/plugins/forms/icheck/jquery.icheck.js"></script>
-<script src="../../public/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-<script src="../../public/plugins/forms/tinymce/tinymce.min.js"></script>
-<script src="../../public/plugins/misc/highlight/highlight.pack.js"></script>
-<script src="../../public/plugins/misc/countTo/jquery.countTo.js"></script>
-<script src="../../public/plugins/file/jquery.ui.widget.js"></script>
-<script src="../../public/plugins/file/tmpl.min.js"></script>
-<script src="../../public/plugins/file/load-image.min.js"></script>
-<script src="../../public/plugins/file/canvas-to-blob.min.js"></script>
-<script src="../../public/plugins/file/jquery.blueimp-gallery.min.js"></script>
-<script src="../../public/plugins/file/jquery.iframe-transport.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-process.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-image.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-audio.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-video.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-validate.js"></script>
-<script src="../../public/plugins/file/jquery.fileupload-ui.js"></script>
-<script src="../../public/js/jquery.sprFlat.js"></script>
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/pages/file.js"></script>
-<script type="text/javascript" src="../../public/js/jquery.json.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/core/moment/moment.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/charts/sparklines/jquery.sparkline.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/forms/icheck/jquery.icheck.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/forms/tinymce/tinymce.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/misc/highlight/highlight.pack.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/misc/countTo/jquery.countTo.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.ui.widget.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/tmpl.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/load-image.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/canvas-to-blob.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.blueimp-gallery.min.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.iframe-transport.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-process.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-image.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-audio.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-video.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-validate.js"></script>
+<script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-ui.js"></script>
+<script src="<%=request.getContextPath()%>/public/js/jquery.sprFlat.js"></script>
+<script src="<%=request.getContextPath()%>/public/js/app.js"></script>
+<script src="<%=request.getContextPath()%>/public/js/pages/file.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/public/js/jquery.json.min.js"></script>
 <script type="text/javascript">
 
     $(':file').change(function(){

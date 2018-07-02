@@ -17,19 +17,19 @@
         <meta name="application-name" content="sprFlat admin template" />
         <!-- Css files -->
         <!-- Icons -->
-        <link href="../../public/css/icons.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/icons.css" rel="stylesheet" />
         <!-- jQueryUI -->
-        <link href="../../public/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
         <!-- Bootstrap stylesheets (included template modifications) -->
-        <link href="../../public/css/bootstrap.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/bootstrap.css" rel="stylesheet" />
         <!-- Plugins stylesheets (all plugin custom css) -->
-        <link href="../../public/css/plugins.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/plugins.css" rel="stylesheet" />
         <!-- Main stylesheets (template main css file) -->
-        <link href="../../public/css/main.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/main.css" rel="stylesheet" />
         <!-- Custom stylesheets ( Put your own changes here ) -->
-        <link href="../../public/css/custom.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/public/css/custom.css" rel="stylesheet" />
         <!-- Fav and touch icons -->
-        <link rel="icon" href="../../public/images/ico/favicon.ico" type="image/png">
+        <link rel="icon" href="<%=request.getContextPath()%>/public/images/ico/favicon.ico" type="image/png">
         <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
         <meta name="msapplication-TileColor" content="#3399cc" />
     </head>
@@ -50,7 +50,7 @@
 
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">
-                                    <img class="user-avatar" src="../../public/images/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
+                                    <img class="user-avatar" src="<%=request.getContextPath()%>/public/images/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
                                 <ul class="dropdown-menu right" role="menu">
                                     <li><a href="profile.html"><i class="st-user"></i> Profile</a>
                                     </li>
@@ -176,24 +176,24 @@
                                     <ul class="in">
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/49.jpg" alt="@chadengle">Chad Engle
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/49.jpg" alt="@chadengle">Chad Engle
                                                 <span class="has-message"><i class="im-pencil"></i></span>
                                             </a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
                                             <span class="status"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/50.jpg" alt="@divya">Divia Manyan</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/50.jpg" alt="@divya">Divia Manyan</a>
                                             <span class="status"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -203,17 +203,17 @@
                                     <ul class="in">
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
                                             <span class="status online"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -223,27 +223,27 @@
                                     <ul>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/56.jpg" alt="@laurengray">Lauren Grey</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/56.jpg" alt="@laurengray">Lauren Grey</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                         <li>
                                             <a href="#" class="chat-name">
-                                                <img class="chat-avatar" src="../../public/images/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
+                                                <img class="chat-avatar" src="<%=request.getContextPath()%>/public/images/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
                                             <span class="status offline"><i class="en-dot"></i></span>
                                         </li>
                                     </ul>
@@ -256,7 +256,7 @@
                             <ul class="chat-ui chat-messages">
                                 <li class="chat-user">
                                     <p class="avatar">
-                                        <img src="../../public/images/avatars/49.jpg" alt="@chadengle">
+                                        <img src="<%=request.getContextPath()%>/public/images/avatars/49.jpg" alt="@chadengle">
                                     </p>
                                     <p class="chat-name">Chad Engle <span class="chat-time">15 seconds ago</span>
                                     </p>
@@ -265,7 +265,7 @@
                                 </li>
                                 <li class="chat-me">
                                     <p class="avatar">
-                                        <img src="../../public/images/avatars/48.jpg" alt="SuggeElson">
+                                        <img src="<%=request.getContextPath()%>/public/images/avatars/48.jpg" alt="SuggeElson">
                                     </p>
                                     <p class="chat-name">SuggeElson <span class="chat-time">10 seconds ago</span>
                                     </p>
@@ -274,7 +274,7 @@
                                 </li>
                                 <li class="chat-user">
                                     <p class="avatar">
-                                        <img src="../../public/images/avatars/49.jpg" alt="@chadengle">
+                                        <img src="<%=request.getContextPath()%>/public/images/avatars/49.jpg" alt="@chadengle">
                                     </p>
                                     <p class="chat-name">Chad Engle <span class="chat-time">now</span>
                                     </p>
@@ -472,7 +472,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4" >
-                                    <img src="../../public/images/newsPlace.png">
+                                    <img src="<%=request.getContextPath()%>/public/images/newsPlace.png">
                                     <span>图片位置对应序号</span>
                                 </div>
                             </div>
@@ -600,56 +600,56 @@
         <!-- End #content -->
         <!-- Javascripts -->
         <!-- Load pace first -->
-        <script src="../../public/plugins/core/pace/pace.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/core/pace/pace.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script>
-        window.jQuery || document.write('<script src="../../public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+        window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
         </script>
         <!--[if lt IE 9]>
-  <script type="text/javascript" src="../../public/js/libs/excanvas.min.js"></script>
+  <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/libs/excanvas.min.js"></script>
   <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <script type="text/javascript" src="../../public/js/libs/respond.min.js"></script>
+  <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/libs/respond.min.js"></script>
 <![endif]-->
         <!-- Bootstrap plugins -->
-        <script src="../../public/js/bootstrap/bootstrap.js"></script>
+        <script src="<%=request.getContextPath()%>/public/js/bootstrap/bootstrap.js"></script>
         <!-- Core plugins ( not remove ever) -->
         <!-- Handle responsive view functions -->
-        <script src="../../public/js/jRespond.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/js/jRespond.min.js"></script>
         <!-- Custom scroll for sidebars,tables and etc. -->
-        <script src="../../public/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../../public/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
         <!-- Resize text area in most pages -->
-        <script src="../../public/plugins/forms/autosize/jquery.autosize.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/forms/autosize/jquery.autosize.js"></script>
         <!-- Proivde quick search for many widgets -->
-        <script src="../../public/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/core/quicksearch/jquery.quicksearch.js"></script>
         <!-- Bootbox confirm dialog for reset postion on panels -->
-        <script src="../../public/plugins/ui/bootbox/bootbox.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/ui/bootbox/bootbox.js"></script>
         <!-- Other plugins ( load only nessesary plugins for every page) -->
-        <script src="../../public/plugins/core/moment/moment.min.js"></script>
-        <script src="../../public/plugins/charts/sparklines/jquery.sparkline.js"></script>
-        <script src="../../public/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
-        <script src="../../public/plugins/forms/icheck/jquery.icheck.js"></script>
-        <script src="../../public/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-        <script src="../../public/plugins/forms/tinymce/tinymce.min.js"></script>
-        <script src="../../public/plugins/misc/highlight/highlight.pack.js"></script>
-        <script src="../../public/plugins/misc/countTo/jquery.countTo.js"></script>
-        <script src="../../public/plugins/file/jquery.ui.widget.js"></script>
-        <script src="../../public/plugins/file/tmpl.min.js"></script>
-        <script src="../../public/plugins/file/load-image.min.js"></script>
-        <script src="../../public/plugins/file/canvas-to-blob.min.js"></script>
-        <script src="../../public/plugins/file/jquery.blueimp-gallery.min.js"></script>
-        <script src="../../public/plugins/file/jquery.iframe-transport.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-process.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-image.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-audio.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-video.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-validate.js"></script>
-        <script src="../../public/plugins/file/jquery.fileupload-ui.js"></script>
-        <script src="../../public/js/jquery.sprFlat.js"></script>
-        <script src="../../public/js/app.js"></script>
-        <script src="../../public/js/pages/file.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/core/moment/moment.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/charts/sparklines/jquery.sparkline.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/forms/icheck/jquery.icheck.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/forms/tinymce/tinymce.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/misc/highlight/highlight.pack.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/misc/countTo/jquery.countTo.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.ui.widget.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/tmpl.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/load-image.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/canvas-to-blob.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.blueimp-gallery.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.iframe-transport.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-process.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-image.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-audio.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-video.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-validate.js"></script>
+        <script src="<%=request.getContextPath()%>/public/plugins/file/jquery.fileupload-ui.js"></script>
+        <script src="<%=request.getContextPath()%>/public/js/jquery.sprFlat.js"></script>
+        <script src="<%=request.getContextPath()%>/public/js/app.js"></script>
+        <script src="<%=request.getContextPath()%>/public/js/pages/file.js"></script>
 
         <script type="text/javascript">
 

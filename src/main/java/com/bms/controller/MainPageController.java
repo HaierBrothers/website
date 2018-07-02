@@ -8,6 +8,8 @@ import com.bms.entity.News;
 import com.bms.service.BannerService;
 import com.bms.service.CryptocurrencyService;
 import com.bms.service.NewsService;
+import com.bms.util.BllConstantEnum;
+import com.bms.util.RestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -83,22 +85,23 @@ public class MainPageController {
 
     @RequestMapping("getAllBanner")
     @ResponseBody
-    public RespMsg<Banner> getBanner(){
+    public RestModel  getBanner(){
         List<Banner> bannerList = bannerService.getAllBanner();
         if(!CollectionUtils.isEmpty(bannerList)){
             bannerList.stream().sorted(Comparator.comparing(Banner::getPicSort)).collect(Collectors.toList());
         }
-        return RespMsg.buildSuccessRespMsg(bannerList);
+        return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功",bannerList);
+
     }
 
     @RequestMapping("getAllNews")
     @ResponseBody
-    public RespMsg<News> getAllNews(){
+    public RestModel getAllNews(){
         List<News> newsList = newsService.getAllNews();
         if(!CollectionUtils.isEmpty(newsList)){
             newsList.stream().sorted(Comparator.comparing(News::getNewsSort)).collect(Collectors.toList());
         }
-        return RespMsg.buildSuccessRespMsg(newsList);
+        return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功",newsList);
     }
 
     @RequestMapping("getAllCryptocurrencys")

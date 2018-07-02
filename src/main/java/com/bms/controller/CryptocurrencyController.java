@@ -5,6 +5,8 @@ import com.bms.base.RespStatus;
 import com.bms.controller.req.CryptocurrencyReq;
 import com.bms.entity.Cryptocurrency;
 import com.bms.service.CryptocurrencyService;
+import com.bms.util.BllConstantEnum;
+import com.bms.util.RestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -59,14 +61,13 @@ public class CryptocurrencyController {
         }
     }
     @RequestMapping("getHis")
-    public String getHis(HttpServletRequest request){
+    public @ResponseBody
+    RestModel getHis(HttpServletRequest request){
         List<Cryptocurrency> list = cryptocurrencyService.getAll();
 
         if(!CollectionUtils.isEmpty(list)){
             list = list.stream().sorted(Comparator.comparing(Cryptocurrency::getUpdateTime)).collect(Collectors.toList());
         }
-        request.setAttribute("list",list);
-
-        return "";
+        return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功",list);
     }
 }
