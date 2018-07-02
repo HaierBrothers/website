@@ -83,22 +83,22 @@ public class LoginController {
         // 验证验证码
         String sessionCode = request.getSession().getAttribute("code").toString();
         if (verifyCode == null && "".equals(verifyCode) && sessionCode == null && "".equals(sessionCode)) {
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_1,"请输入验证码");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入验证码");
         }
         if (!verifyCode.equalsIgnoreCase(sessionCode)) {
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_1,"验证码错误");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"验证码错误");
         }
         if(StringUtils.isEmpty(userName)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_1,"请输入用户名");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入用户名");
         }
         if(StringUtils.isEmpty(password)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_1,"请输入密码");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入密码");
         }
         User user = new User();
         user.setAccount(userName);
         List<User> selectUser = userMapper.select(user);
         if(CollectionUtils.isEmpty(selectUser)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_1,"登陆失败，没有该用户");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"登陆失败，没有该用户");
         }
         return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"登陆成功");
     }

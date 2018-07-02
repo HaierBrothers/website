@@ -2,7 +2,7 @@ package com.bms.controller.req;
 
 public class AddEventDayReq {
     private Long sid;
-    private Integer color;
+    private String color;
     private Integer col;
     private Integer row;
     private String day;
@@ -24,11 +24,11 @@ public class AddEventDayReq {
         this.sid = sid;
     }
 
-    public Integer getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Integer color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
