@@ -33,7 +33,7 @@
 					<span>验证码：</span>
 					<input type="text" name="CheckCode" class="login_input verify_input">
 				</li>
-				<img id="verifyimg" class="verifyimg" border="0" alt="验证码" src="/verifyCode" onclick="changeImg()" />
+				<img id="verifyimg" class="verifyimg" border="0" alt="验证码" src="<%=request.getContextPath()%>/verifyCode" onclick="changeImg()" />
 				<div class="clearfix"></div>
 				<li class="login-sub">
 					<input id="submitBtn" type="button" name="Submit" value="登录" />
@@ -47,7 +47,10 @@
 	</div>
 </div>
 <script type="text/javascript">
-		window.onload = function() {
+
+    var CTX_PATH = '<%=request.getContextPath()%>';
+
+    window.onload = function() {
 			var config = {
 				vx : 4,
 				vy : 4,
@@ -89,7 +92,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: '/login',
+                url: CTX_PATH+'/login',
 				data: $('#formAddHandlingFee').serialize(),
                 success: function (result) {
                     if(undefined == result){
@@ -100,7 +103,7 @@
                         if (result.code == 0) {
                             $('.jsrz_main_check').html('登陆成功');
                             $(".jsrz_main_check").css("color","green");
-                            window.location.href = "/toCryptocurrency";
+                            window.location.href = CTX_PATH+"/toCryptocurrency";
                         } else {
                             $('.jsrz_main_check').html(result.errorDescription);
                             $(".jsrz_main_check").css("color","red");

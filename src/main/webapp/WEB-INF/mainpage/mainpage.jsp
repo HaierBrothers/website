@@ -133,12 +133,12 @@
                 <ul id="sideNav" class="nav nav-pills nav-stacked">
                     <li><a href="gallery.html"><i class="im-images"></i> EVENTS管理</a>
                     </li>
-                    <li><a href="/toMainpage"> mainpage管理</a>
+                    <li><a href="<%=request.getContextPath()%>/toMainpage"> mainpage管理</a>
                     </li>
                     <li>
                         <a href="#"> cryptocurrency管理 <i class="im-paragraph-justify"></i></a>
                         <ul class="nav sub">
-                            <li><a href="/toCryptocurrency"><i class="ec-pencil2"></i> 图片上传</a>
+                            <li><a href="<%=request.getContextPath()%>/toCryptocurrency"><i class="ec-pencil2"></i> 图片上传</a>
                             </li>
                             <li><a href="data-tables.html"><i class="im-checkbox-checked"></i> 上传记录</a>
                             </li>
@@ -652,6 +652,7 @@
         <script src="<%=request.getContextPath()%>/public/js/pages/file.js"></script>
 
         <script type="text/javascript">
+            var CTX_PATH = '<%=request.getContextPath()%>';
 
             $('input[type=file]').change(function(){
                 var file = this.files[0];
@@ -665,7 +666,7 @@
                 var formData = new FormData($(this).parents('.fileForm')[0]);
                 var btnObj = $(this)
                 $.ajax({
-                    url: '/upload/upload',  //server script to process data
+                    url: CTX_PATH+'/upload/upload',  //server script to process data
                     type: 'POST',
                     xhr: function() {  // custom xhr
                         myXhr = $.ajaxSettings.xhr();
@@ -718,7 +719,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: '/submitBanner',
+                    url: CTX_PATH+'/submitBanner',
                     data:params,
                     success: function (result) {
                         alert(result);
@@ -772,7 +773,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: '/submitNews',
+                    url: CTX_PATH+'/submitNews',
                     data:params,
                     success: function (result) {
                         alert(reslut);
