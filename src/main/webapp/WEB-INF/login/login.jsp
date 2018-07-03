@@ -89,33 +89,38 @@
         }
 
         $("#submitBtn").bind("click",function(){
+            var UserName = $("input[name=UserName]").val();
+            var password = $("input[name=password]").val();
+            var verifyCode = $("input[name=CheckCode]").val();
+
+            var params = {};
+            params["UserName"] = UserName;
+            params["password"] = password;
+            params["verifyCode"] = verifyCode;
+
+
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: CTX_PATH+'/login',
-				data: $('#formAddHandlingFee').serialize(),
+                data:params,
                 success: function (result) {
+                    alert(reslut);
                     if(undefined == result){
                         $('.jsrz_main_check').html("服务异常，请稍后再试");
                         $(".jsrz_main_check").css("color","red");
-					}else{
-//                        var data = jQuery.parseJSON(result);
+                    }else{
                         if (result.code == 0) {
                             $('.jsrz_main_check').html('登陆成功');
                             $(".jsrz_main_check").css("color","green");
-                            window.location.href = CTX_PATH+"/toCryptocurrency";
+                            window.location.href = "/toCryptocurrency";
                         } else {
                             $('.jsrz_main_check').html(result.errorDescription);
                             $(".jsrz_main_check").css("color","red");
                         }
-					}
-                },
-                error: function(data) {
-                    alert("error:"+data.errorDescription);
+                    }
                 }
             });
-//            clearForm: false,//禁止清楚表单
-//			resetForm: false //禁止重置表单
         });
 
 	</script>
