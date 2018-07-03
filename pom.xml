@@ -276,7 +276,7 @@
           <configuration>
             <scanIntervalSeconds>5</scanIntervalSeconds>
             <webApp>
-              <contextPath>/</contextPath>
+              <contextPath>/website</contextPath>
             </webApp>
           </configuration>
         </plugin>

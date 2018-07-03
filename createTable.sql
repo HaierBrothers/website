@@ -46,9 +46,9 @@ CREATE TABLE `event_day` (
 
 CREATE TABLE `event_month` (
 `sid` bigint(20) NOT NULL AUTO_INCREMENT,
+`month` varchar(45) DEFAULT NULL COMMENT '年6',
 `month` varchar(45) DEFAULT NULL COMMENT '月份2018-06',
-PRIMARY KEY (`sid`),
-UNIQUE KEY `month_unique` (`month`)
+PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `news` (
