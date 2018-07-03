@@ -11,9 +11,56 @@
     <result column="time" property="time" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="color" property="color" jdbcType="INTEGER" />
+    <result column="titleCN" property="titleCN" jdbcType="VARCHAR" />
+    <result column="titleEn" property="titleEn" jdbcType="VARCHAR" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="contentCn" property="contentCn" jdbcType="LONGVARCHAR" />
+    <result column="contentEn" property="contentEn" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
+  <update id="insertOrUpdate" parameterType="com.bms.entity.EventDay">
+
+    INSERT INTO `club`.`event_day`
+    (
+    `month_id`,
+    `day`,
+    `time`,
+    `type`,
+    `status`,
+    `titleCn`,
+    `titleEn`,
+    `contentCn`,
+    `contentEn`,
+    `color`,
+    `pic_url`)
+    VALUES
+    (
+    #{monthId },
+    #{day },
+    #{time },
+    #{type },
+    #{status },
+    #{titleCn },
+    #{titleEn },
+    #{contentCn },
+    #{contentEn },
+    #{color },
+    #{picUrl }
+    )
+    ON DUPLICATE KEY UPDATE
+    `month_id` = #{monthId },
+    `day` = #{day },
+    `time` = #{time },
+    `type` = #{type },
+    `status` = #{status },
+    `title_cn` = #{titleCn },
+    `title_en` = #{titleEn },
+    `content_cn` = #{contentCn },
+    `content_en` = #{contentEn },
+    `color` = #{color },
+    `pic_url` = #{picUrl }
+
+  </update>
 </mapper>

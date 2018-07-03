@@ -3,20 +3,20 @@ package com.bms.entity;
 import tk.mybatis.mapper.annotation.KeySql;
 import tk.mybatis.mapper.code.IdentityDialect;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "event_month",schema = "club")
 public class EventMonth {
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL, useGeneratedKeys = true)
     private Long sid;
+    @Column(name = "year")
+    private String year;
 
     /**
      * 月份2018-06
      */
+    @Column(name = "month")
     private String month;
 
     /**
@@ -49,5 +49,13 @@ public class EventMonth {
      */
     public void setMonth(String month) {
         this.month = month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

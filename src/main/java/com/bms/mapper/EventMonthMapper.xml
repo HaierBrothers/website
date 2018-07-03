@@ -7,5 +7,23 @@
     -->
     <id column="sid" property="sid" jdbcType="BIGINT" />
     <result column="month" property="month" jdbcType="VARCHAR" />
+    <result column="year" property="year" jdbcType="VARCHAR" />
   </resultMap>
+
+  <update id="insertOrUpdate" parameterType="com.bms.entity.EventMonth">
+
+    INSERT INTO `club`.`event_month`
+    (
+    `year`,
+    `month`)
+    VALUES
+    (
+    #{year },
+    #{month }
+    )
+    ON DUPLICATE KEY UPDATE
+    `year` = #{year },
+    `month` = #{month }
+
+  </update>
 </mapper>

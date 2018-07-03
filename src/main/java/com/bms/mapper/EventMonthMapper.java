@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface EventMonthMapper extends CommonMapper<EventMonth> {
+    int insertOrUpdate(EventMonth eventMonth);
+
 }
