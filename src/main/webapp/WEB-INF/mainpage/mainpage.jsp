@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8"  %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,87 +40,18 @@
                 <div class="navbar">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="index.html">
-                            <i class="im-windows8 text-logo-element animated bounceIn"></i><span class="text-logo">spr</span><span class="text-slogan">flat</span>
+                            <i class="im-windows8 text-logo-element animated bounceIn"></i><span class="text-logo">后台管理系统</span>
                         </a>
                     </div>
                     <nav class="top-nav" role="navigation">
-                        <ul class="nav navbar-nav pull-left">
-                        </ul>
                         <ul class="nav navbar-nav pull-right">
-
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">
-                                    <img class="user-avatar" src="<%=request.getContextPath()%>/public/images/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
-                                <ul class="dropdown-menu right" role="menu">
-                                    <li><a href="profile.html"><i class="st-user"></i> Profile</a>
-                                    </li>
-                                    <li><a href="file.html"><i class="st-cloud"></i> Files</a>
-                                    </li>
-                                    <li><a href="#"><i class="st-settings"></i> Settings</a>
-                                    </li>
-                                    <li><a href="login.html"><i class="im-exit"></i> Logout</a>
-                                    </li>
-                                </ul>
+                                    <img class="user-avatar" src="<%=request.getContextPath()%>/public/images/avatars/48.jpg" alt="SuggeElson">管理员</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                <!-- Start #header-area -->
-                <div id="header-area" class="fadeInDown">
-                    <div class="header-area-inner">
-                        <ul class="list-unstyled list-inline">
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="im-pie"></i>
-                                        <span>Earning Stats</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="ec-images color-dark"></i>
-                                        <span>Gallery</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="en-light-bulb color-orange"></i>
-                                        <span>Fresh ideas</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="ec-link color-blue"></i>
-                                        <span>Links</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="ec-support color-red"></i>
-                                        <span>Support</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="shortcut-button">
-                                    <a href="#">
-                                        <i class="st-lock color-teal"></i>
-                                        <span>Lock area</span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End #header-area -->
             </div>
             <!-- Start .header-inner -->
         </div>
@@ -131,26 +62,21 @@
             <div class="sidebar-inner">
                 <!-- Start #sideNav -->
                 <ul id="sideNav" class="nav nav-pills nav-stacked">
-                    <li><a href="gallery.html"><i class="im-images"></i> EVENTS管理</a>
+                    <li><a href="<%=request.getContextPath()%>/toEvents">EVENTS管理 </a>
                     </li>
-                    <li><a href="<%=request.getContextPath()%>/toMainpage"> mainpage管理</a>
+                    <li><a href="<%=request.getContextPath()%>/toMainpage">mainpage管理 </a>
                     </li>
                     <li>
-                        <a href="#"> cryptocurrency管理 <i class="im-paragraph-justify"></i></a>
+                        <a href="#"> cryptocurrency管理</a>
                         <ul class="nav sub">
                             <li><a href="<%=request.getContextPath()%>/toCryptocurrency"><i class="ec-pencil2"></i> 图片上传</a>
                             </li>
-                            <li><a href="data-tables.html"><i class="im-checkbox-checked"></i> 上传记录</a>
+                            <li><a href="<%=request.getContextPath()%>/toFileList"><i class="im-checkbox-checked"></i> 上传记录</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <!-- End #sideNav -->
-                <!-- Start .sidebar-panel -->
-                <div class="sidebar-panel">
-
-                </div>
-                <!-- End .sidebar-panel -->
             </div>
             <!-- End .sidebar-inner -->
         </div>
@@ -482,117 +408,6 @@
                         </div>
                     </div>
                 <!-- The blueimp Gallery widget -->
-                <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-                    <div class="slides">
-                    </div>
-                    <h3 class="title"></h3>
-                    <a class="prev">
-         ‹
-    </a>
-                    <a class="next">
-         ›
-    </a>
-                    <a class="close white">
-                    </a>
-                    <a class="play-pause">
-                    </a>
-                    <ol class="indicator">
-                    </ol>
-                </div>
-                <script id="template-upload" type="text/x-tmpl">
-                { %
-                    for (var i = 0, file; file = o.files[i]; i++)
-                    { %
-                    } < tr class = "template-upload fade" > < td > < span class = "preview" > < /span>
-            </td > < td class = "vam" > < p class = "name" >
-                    { %= file.name %
-                    } < /p>
-                {% if (file.error) { %}
-                    <div><span class="label label-danger">Error</span >
-                    { %= file.error %
-                    } < /div>
-                {% } %}
-            </td > < td class = "vam" > < p class = "size" >
-                    { %= o.formatFileSize(file.size) %
-                    } < /p>
-                {% if (!o.files.error) { %}
-                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="progress-bar progress-bar-success" style="width:0%;"></div > < /div>
-                {% } %}
-            </td > < td class = "vam" >
-                    { %
-                        if (!o.files.error && !i && !o.options.autoUpload)
-                        { %
-                        } < button class = "btn blue start btn-sm" > < i class = "en-upload" > < /i>
-                        <span>Start</span > < /button>
-                {% } %}
-                {% if (!i) { %}
-                    <button class="btn red cancel btn-sm">
-                        <i class="fa-ban-circle"></i > < span > Cancel < /span>
-                    </button >
-                        { %
-                        } %
-                    } < /td>
-        </tr >
-                    { %
-                    } %
-                }
-                </script>
-                <!-- The template to display files available for download -->
-                <script id="template-download" type="text/x-tmpl">
-                { %
-                    for (var i = 0, file; file = o.files[i]; i++)
-                    { %
-                    } < tr class = "template-download fade" > < td > < span class = "preview" >
-                    { %
-                        if (file.thumbnailUrl)
-                        { %
-                        } < a href = "{%=file.url%}"
-                        title = "{%=file.name%}"
-                        download = "{%=file.name%}"
-                        data - gallery > < img src = "{%=file.thumbnailUrl%}" > < /a>
-                    {% } %}
-                </span > < /td>
-            <td class="vam">
-                <p class="name">
-                    {% if (file.url) { %}
-                        <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a >
-                        { %
-                        }
-                        else
-                        { %
-                        } < span >
-                        { %= file.name %
-                        } < /span>
-                    {% } %}
-                </p >
-                        { %
-                            if (file.error)
-                            { %
-                            } < div > < span class = "label label-danger" > Error < /span> {%=file.error%}</div >
-                            { %
-                            } %
-                        } < /td>
-            <td class="vam">
-                <span class="size">{%=o.formatFileSize(file.size)%}</span > < /td>
-            <td class="vam">
-                {% if (file.deleteUrl) { %}
-                    <button class="btn red delete btn-sm" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                        <i class="en-trash"></i > < span > Delete < /span>
-                    </button > < input type = "checkbox"
-                        name = "delete"
-                        value = "1"
-                        class = "toggle" >
-                        { %
-                        }
-                        else
-                        { %
-                        } < button class = "btn yellow cancel btn-sm" > < i class = "fa-ban-circle" > < /i>
-                        <span>Cancel</span > < /button>
-                {% } %}
-            </td > < /tr>
-    {% } %}
-                </script>
             </div>
             <!-- End .content-wrapper -->
             <div class="clearfix"></div>
@@ -601,11 +416,16 @@
         <!-- Javascripts -->
         <!-- Load pace first -->
         <script src="<%=request.getContextPath()%>/public/plugins/core/pace/pace.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- Important javascript libs(put in all pages) -->
+        <script src="<%=request.getContextPath()%>/public/js/jquery-1.8.3.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+        </script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script>
-        window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+            window.jQuery || document.write('<script src="<%=request.getContextPath()%>/public/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
         </script>
+        <!--[if lt IE 9]>
         <!--[if lt IE 9]>
   <script type="text/javascript" src="<%=request.getContextPath()%>/public/js/libs/excanvas.min.js"></script>
   <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
