@@ -364,12 +364,13 @@
                     $('.jsrz_main_check').html("服务异常，请稍后再试");
                     $(".jsrz_main_check").css("color","red");
                 }else{
-                    var data = jQuery.parseJSON(result);
-                    if (data.code == 0) {
+                    if (result.code == 0) {
                         $('.jsrz_main_check').html('保存成功');
                         $(".jsrz_main_check").css("color","green");
+                        alert(result.errorDescription);
+                        window.location.href =CTX_PATH+ "/toCryptocurrency";
                     } else {
-                        $('.jsrz_main_check').html(data.errorDescription);
+                        $('.jsrz_main_check').html(result.errorDescription);
                         $(".jsrz_main_check").css("color","red");
                     }
                 }

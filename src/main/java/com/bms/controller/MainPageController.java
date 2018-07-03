@@ -2,6 +2,7 @@ package com.bms.controller;
 
 import com.bms.base.RespMsg;
 import com.bms.base.RespStatus;
+import com.bms.controller.base.BaseController;
 import com.bms.entity.Banner;
 import com.bms.entity.Cryptocurrency;
 import com.bms.entity.News;
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("mainPage")
-public class MainPageController {
+public class MainPageController extends BaseController {
     @Autowired
     private BannerService bannerService;
     @Autowired
@@ -81,7 +83,8 @@ public class MainPageController {
 
     @RequestMapping("getAllBanner")
     @ResponseBody
-    public RestModel  getBanner(){
+    public RestModel  getBanner(HttpServletResponse response){
+        setResponse(response);
         List<Banner> bannerList = bannerService.getAllBanner();
         if(!CollectionUtils.isEmpty(bannerList)){
             bannerList.stream().sorted(Comparator.comparing(Banner::getPicSort)).collect(Collectors.toList());
@@ -92,7 +95,8 @@ public class MainPageController {
 
     @RequestMapping("getAllNews")
     @ResponseBody
-    public RestModel getAllNews(){
+    public RestModel getAllNews(HttpServletResponse response){
+        setResponse(response);
         List<News> newsList = newsService.getAllNews();
         if(!CollectionUtils.isEmpty(newsList)){
             newsList.stream().sorted(Comparator.comparing(News::getNewsSort)).collect(Collectors.toList());
