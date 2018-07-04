@@ -124,7 +124,7 @@ public class EventsPageController {
         eventDay.setContentCn(contentCn);
         eventDay.setContentEn(contentEn);
         eventDay.setColor(color);
-        eventDay.setPicUrl(picUrl);
+        if(!StringUtils.isEmpty(picUrl))eventDay.setPicUrl(picUrl);
         int isSuccess = 0;
         if(!StringUtils.isEmpty(sid)){
             eventDay.setSid(Long.parseLong(sid));

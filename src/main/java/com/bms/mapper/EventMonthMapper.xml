@@ -26,4 +26,8 @@
     `month` = #{month }
 
   </update>
+
+  <select id="getEventsMonths" resultMap="BaseResultMap" >
+    select * from event_month order by year,month;
+  </select>
 </mapper>

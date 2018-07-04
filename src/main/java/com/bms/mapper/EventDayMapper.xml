@@ -11,13 +11,32 @@
     <result column="time" property="time" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="titleCN" property="titleCN" jdbcType="VARCHAR" />
-    <result column="titleEn" property="titleEn" jdbcType="VARCHAR" />
+    <result column="title_cn" property="titleCn" jdbcType="VARCHAR" />
+    <result column="title_en" property="titleEn" jdbcType="VARCHAR" />
     <result column="color" property="color" jdbcType="VARCHAR" />
     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
-    <result column="contentCn" property="contentCn" jdbcType="LONGVARCHAR" />
-    <result column="contentEn" property="contentEn" jdbcType="LONGVARCHAR" />
+    <result column="content_cn" property="contentCn" jdbcType="LONGVARCHAR" />
+    <result column="content_en" property="contentEn" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+  <!--<sql id="sqlParams" >-->
+    <!--sid as sid,-->
+  <!--month_id AS  monthId,-->
+  <!--day as day,-->
+  <!--time as time,-->
+  <!--type as type,-->
+  <!--status as status ,-->
+  <!--title_cn AS titleCN,-->
+  <!--content_cn AS contentCn ,-->
+  <!--color AS color ,-->
+  <!--pic_url AS  picUrl,-->
+  <!--row,-->
+  <!--col,-->
+  <!--title_en AS titleEn,-->
+  <!--content_en AS  contentEn-->
+  <!--</sql>-->
+
+
 
 
   <update id="insertOrUpdate" parameterType="com.bms.entity.EventDay">
@@ -63,4 +82,8 @@
     `pic_url` = #{picUrl }
 
   </update>
+
+  <select id="getEventsDayByMonth" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    select *  from event_day where event_day.month_id=#{monthId} ORDER BY CAST(event_day.`day` AS UNSIGNED);
+   </select>
 </mapper>
