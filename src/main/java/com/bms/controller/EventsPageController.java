@@ -163,7 +163,7 @@ public class EventsPageController {
             eventDay.setSid(Long.parseLong(dayId));
             eventDay.setStatus(1);
             eventDayMapper.updateByPrimaryKeySelective(eventDay);
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功");
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功",dayId);
         }catch (Exception e){
             e.printStackTrace();
             return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"保存记录失败");

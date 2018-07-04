@@ -62,11 +62,11 @@
                                 <td>${eventDay.time}</td>
                                 <td>
                                     <div class="form-group">
-                                        <button  class="btn btn-xs btn-primary start updatebtn" data-monthId="${eventDay.monthId}" data-dayId="${eventDay.sid}">
+                                        <button  class="btn btn-xs btn-primary start" onclick="update(${eventDay.sid},${eventDay.monthId})" data-monthId="${eventDay.monthId}" data-dayId="${eventDay.sid}">
                                             <span>修改</span>
                                         </button>
                                         <span class="jsrz_main_check"></span>
-                                        <button  class="btn btn-xs btn-danger start cancelBtn" data-dayId="${eventDay.sid}">
+                                        <button  class="btn btn-xs btn-danger start" onclick="deleteDay(${eventDay.sid},${eventDay.monthId})" data-dayId="${eventDay.sid}" data-monthId="${eventDay.monthId}">
                                             <span>删除</span>
                                         </button>
                                         <span class="jsrz_main_check"></span>

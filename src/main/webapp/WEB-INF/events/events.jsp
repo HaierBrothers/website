@@ -216,11 +216,7 @@
             alert("请先添加月份，或者刷新页面再试");
         }
     });
-    $(".updatebtn").bind("click",function(){
-        var dayId = $(this).attr("data-dayId");
-        var monthId = $(this).attr("data-monthId");
-        window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId+"&monthId="+monthId;
-    });
+
     $("#selectMonth").bind("change",function () {
         var monthId = $(this).find("option:selected").val();
         $("#toAddDayBtn").attr("date-monthId",monthId);
@@ -228,7 +224,6 @@
 
     });
     var getDayHtml = function(monthId){
-        alert(monthId)
         $.ajax({
             type:"get",
             url:CTX_PATH+'/toDay?monthId=' + monthId,
@@ -237,9 +232,16 @@
             }
         })
     };
-    $(".cancelBtn").bind("click",function(){
-        var dayId = $(this).attr("data-dayId");
-        var monthId = $(this).attr("data-monthId");
+    var update = function(dayId,monthId){
+        window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId+"&monthId="+monthId;
+    }
+    // $(".updatebtn").bind("click",function(){
+    //     var dayId = $(this).attr("data-dayId");
+    //     var monthId = $(this).attr("data-monthId");
+    //     window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId+"&monthId="+monthId;
+    // });
+    var deleteDay = function(dayId,monthId){
+
         var params = {};
         params["dayId"] = dayId;
         $.ajax({
@@ -252,7 +254,6 @@
                     $('.jsrz_main_check').html('保存成功');
                     $(".jsrz_main_check").css("color","green");
                     // 设置 月份ID
-                    monthId=result.dataObject;
                     window.location.href=CTX_PATH+"/toEvents?monthId="+monthId;
                 } else {
                     $('.jsrz_main_check').html(result.errorDescription);
@@ -260,8 +261,31 @@
                 }
             }
         });
-    });
-
+    }
+    // $(".cancelBtn").bind("click",function(){
+    //     var dayId = $(this).attr("data-dayId");
+    //     var monthId = $(this).attr("data-monthId");
+    //     var params = {};
+    //     params["dayId"] = dayId;
+    //     $.ajax({
+    //         type: "POST",
+    //         dataType: "json",
+    //         url: CTX_PATH+'/cancelDay',
+    //         data:params,
+    //         success: function (result) {
+    //             if (result.code == 0) {
+    //                 $('.jsrz_main_check').html('保存成功');
+    //                 $(".jsrz_main_check").css("color","green");
+    //                 // 设置 月份ID
+    //                 monthId=result.dataObject;
+    //                 window.location.href=CTX_PATH+"/toEvents?monthId="+monthId;
+    //             } else {
+    //                 $('.jsrz_main_check').html(result.errorDescription);
+    //                 $(".jsrz_main_check").css("color","red");
+    //             }
+    //         }
+    //     });
+    // });
 </script>
 
 </body>
