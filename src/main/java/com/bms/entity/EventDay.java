@@ -17,33 +17,39 @@ public class EventDay {
     /**
      * 日期 02
      */
+    @Column(name = "day")
     private String day;
 
     /**
      * 时间 09
      */
+    @Column(name = "time")
     private String time;
 
     /**
      * 类型 小文本:1;大文本:2;小图:3;大图:4
      */
+    @Column(name = "type")
     private Integer type;
 
     /**
      * 1删除;0正常
      */
+    @Column(name = "status")
     private Integer status;
 
     /**
      * 标题
      */
+    @Column(name = "title_cn")
     private String titleCn;
-
+    @Column(name = "title_en")
     private String titleEn;
 
     /**
      * 颜色 1:红色;2:绿色;3:蓝色  颜色值
      */
+    @Column(name = "color")
     private String color;
 
     /**
@@ -55,11 +61,15 @@ public class EventDay {
     /**
      *  内容
      */
+    @Column(name = "content_cn")
     private String contentCn;
+    @Column(name = "content_en")
     private String contentEn;
 
+    @Column(name = "row")
     private Integer row;
 
+    @Column(name = "col")
     private Integer col;
 
     /**
@@ -236,4 +246,5 @@ public class EventDay {
     public void setContentEn(String contentEn) {
         this.contentEn = contentEn;
     }
+
 }

@@ -209,16 +209,13 @@
             url: CTX_PATH+'/submitEventsMonth',
             data:params,
             success: function (result) {
-                alert(result.code == 0);
-                alert(result.dataObject);
-                alert(result.errorDescription);
+
                 if (result.code == 0) {
-                    alert(result.code );
                     $('.jsrz_main_check').html('保存成功');
                     $(".jsrz_main_check").css("color","green");
                     // 设置 月份ID
-                    alert(result.dataObject);
                     monthId=result.dataObject;
+                    window.location.href=CTX_PATH + '/toAddEventsDays?monthId='+monthId;
                 } else {
                     $('.jsrz_main_check').html(result.errorDescription);
                     $(".jsrz_main_check").css("color","red");

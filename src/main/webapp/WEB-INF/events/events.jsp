@@ -113,72 +113,23 @@
                                 <button id="toAddMonthBtn" class="btn btn-primary start">
                                     <span>添加月</span>
                                 </button>
-                                <span class="jsrz_main_check"></span>
+                            </div>
+                            <div class="form-group page-header">
+                                <button id="toAddDayBtn" date-monthId="${eventMonth.sid}" class="btn btn-primary start">
+                                    <span>添加天</span>
+                                </button>
                             </div>
                         </div>
                 </div>
             </div>
 
             <%-- tables --%>
-            <div class="row">
-                <!-- Start .row -->
-                <div class="col-lg-12">
-                    <!-- col-lg-12 start here -->
-                    <div class="panel panel-default plain toggle panelClose panelRefresh">
-                        <!-- Start .panel -->
-                        <div class="panel-heading white-bg">
-                            <h4 class="panel-title">Table bordered</h4>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th class="per10">
-                                        日期（天）
-                                    </th>
-                                    <th class="per10">模块</th>
-                                    <th class="per10">颜色/图片</th>
-                                    <th class="per10">主标题</th>
-                                    <th class="per11">主标题（英文）</th>
-                                    <th class="per14">内容</th>
-                                    <th class="per15">内容（英文）</th>
-                                    <th class="per10">时间（小时）</th>
-                                    <th class="per10">操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Jacob Olsen</td>
-                                    <td>Developer</td>
-                                    <td>2530$</td>
-                                    <td>2530$</td>
-                                    <td>2530$</td>
-                                    <td>2530$</td>
-                                    <td>2530$</td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button  class="btn btn-xs btn-primary start updatebtn" data-dayId="afa">
-                                                <span>修改</span>
-                                            </button>
-                                            <span class="jsrz_main_check"></span>
-                                            <button  class="btn btn-xs btn-danger start cancelBtn" data-dayId="12312">
-                                                <span>删除</span>
-                                            </button>
-                                            <span class="jsrz_main_check"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- End .panel -->
-                </div>
-                <!-- col-lg-12 end here -->
-            </div>
+            <c:if test="${! empty eventMonth}">
+                <jsp:include page="/toDay?monthId=${eventMonth.sid}" flush="true"/>
+            </c:if>
+            <c:if test="${empty eventMonth}">
+                <jsp:include page="/toDay" flush="true"/>
+            </c:if>
             <!-- End .row -->
             <!-- Page End here -->
         </div>
@@ -250,31 +201,36 @@
     $("#toAddMonthBtn").bind("click",function(){
         window.location.href = CTX_PATH+"/toAddEvents";
     });
+    $("#toAddDayBtn").bind("click",function(){
+        var monthId = $(this).attr("date-monthId");
+        if(null != monthId){
+            window.location.href = CTX_PATH+"/toAddEventsDays?monthId="+monthId;
+        }else{
+            alert("请先添加月份，或者刷新页面再试");
+        }
+    });
     $(".updatebtn").bind("click",function(){
         var dayId = $(this).attr("data-dayId");
-        window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId;
+        var monthId = $(this).attr("data-monthId");
+        window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId+"&monthId="+monthId;
     });
     $(".cancelBtn").bind("click",function(){
         var dayId = $(this).attr("data-dayId");
-
+        var monthId = $(this).attr("data-monthId");
         var params = {};
         params["dayId"] = dayId;
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: CTX_PATH+'/submitEventsMonth',
+            url: CTX_PATH+'/cancelDay',
             data:params,
             success: function (result) {
-                alert(result.code == 0);
-                alert(result.dataObject);
-                alert(result.errorDescription);
                 if (result.code == 0) {
-                    alert(result.code );
                     $('.jsrz_main_check').html('保存成功');
                     $(".jsrz_main_check").css("color","green");
                     // 设置 月份ID
-                    alert(result.dataObject);
                     monthId=result.dataObject;
+                    window.location.href=CTX_PATH+"/toEvents?monthId="+monthId;
                 } else {
                     $('.jsrz_main_check').html(result.errorDescription);
                     $(".jsrz_main_check").css("color","red");

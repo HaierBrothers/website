@@ -10,6 +10,8 @@ import com.bms.util.RestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +36,12 @@ public class EventsPageController {
         EventMonth eventMonth = new EventMonth();
         eventMonth.setMonth("12");
         eventMonth.setYear("2017");
-        request.setAttribute("eventMonth",eventMonth);
+        List<EventMonth> monthList = eventMonthMapper.selectAll();
+        if(!CollectionUtils.isEmpty(monthList)){
+            request.setAttribute("eventMonth",monthList.get(monthList.size()-1));
+        }else{
+            request.setAttribute("eventMonth",eventMonth);
+        }
         return "events/events";
     }
 
@@ -67,9 +74,23 @@ public class EventsPageController {
     }
 
     @RequestMapping(value = "/toAddEventsDays",method = RequestMethod.GET)
-    public String toAddEventsDays(HttpServletRequest request, HttpServletResponse response){
+    public String toAddEventsDays(HttpServletRequest request){
         String dayId = request.getParameter("dayId");
+        String monthId = request.getParameter("monthId");
+        if(!StringUtils.isEmpty(monthId)){
+            EventMonth eventMonth = new EventMonth();
+            eventMonth.setSid(Long.valueOf(monthId));
+            eventMonth= eventMonthMapper.selectByPrimaryKey(eventMonth);
+            request.setAttribute("month",eventMonth.getMonth());
+            request.setAttribute("year",eventMonth.getYear());
+        }
+        if(!StringUtils.isEmpty(dayId)){
+            EventDay eventDay = new EventDay();
+            eventDay.setSid(Long.parseLong(dayId));
+            request.setAttribute("eventDay",eventDayMapper.selectByPrimaryKey(eventDay));
+        }
         request.setAttribute("dayId",dayId);
+        request.setAttribute("monthId",monthId);
         return "events/addEventDay";
     }
 
@@ -79,12 +100,11 @@ public class EventsPageController {
     @RequestMapping(value = "/submitEventsDays",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
     @ResponseBody
     public RestModel submitEventsDays(HttpServletRequest request, HttpServletResponse response){
-        String sid = request.getParameter(" sid");
+        String sid = request.getParameter("dayId");
         String monthId = request.getParameter("monthId");
         String day = request.getParameter("day");
         String time = request.getParameter("time");
         String type = request.getParameter("type");
-        String status = request.getParameter("status");
         String titleCn = request.getParameter("titleCn");
         String titleEn = request.getParameter("titleEn");
         String contentCn = request.getParameter("contentCn");
@@ -97,17 +117,56 @@ public class EventsPageController {
         eventDay.setDay(day);
         eventDay.setTime(time);
         eventDay.setType(Integer.valueOf(type));
-        eventDay.setStatus(Integer.valueOf(status));
+        eventDay.setStatus(0);
         eventDay.setTitleCn(titleCn);
         eventDay.setTitleEn(titleEn);
         eventDay.setContentCn(contentCn);
         eventDay.setContentEn(contentEn);
         eventDay.setColor(color);
         eventDay.setPicUrl(picUrl);
-        int isSuccess = eventDayMapper.insertOrUpdate(eventDay);
+        int isSuccess = 0;
+        if(!StringUtils.isEmpty(sid)){
+            eventDay.setSid(Long.parseLong(sid));
+            isSuccess = eventDayMapper.updateByPrimaryKey(eventDay);
+        }else{
+            isSuccess = eventDayMapper.insertUseGeneratedKeys(eventDay);
+        }
         if(isSuccess>0){
             return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功");
         }
         return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"保存记录失败");
+    }
+
+    @RequestMapping("/toDay")
+    public String toDay(HttpServletRequest request){
+        String monthId = request.getParameter("monthId");
+        try {
+            if(!StringUtils.isEmpty(monthId)){
+                EventDay eventDay = new EventDay();
+                eventDay.setMonthId(Long.valueOf(monthId));
+                eventDay.setStatus(0);
+                List<EventDay> eventDayList = eventDayMapper.select(eventDay);
+                request.setAttribute("eventDayList",eventDayList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "events/toEventDay";
+    }
+    @RequestMapping(value = "/cancelDay",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public RestModel cancelDay(HttpServletRequest request){
+        String dayId = request.getParameter("dayId");
+        try {
+            EventDay eventDay = new EventDay();
+            eventDay.setSid(Long.parseLong(dayId));
+            eventDay.setStatus(1);
+            eventDayMapper.updateByPrimaryKeySelective(eventDay);
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"操作成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"保存记录失败");
+        }
+
     }
 }

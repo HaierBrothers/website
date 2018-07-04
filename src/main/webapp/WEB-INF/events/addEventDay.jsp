@@ -76,7 +76,9 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                                    <input type="text" id="yearInput" name="yearInput" class="form-control" placeholder="填写将要添加的年" autofocus="autofocus" value="" />
+                                    <input type="hidden" name="monthId" value="${monthId}">
+                                    <input type="hidden" name="dayId" value="${dayId}">
+                                    <input type="text" id="yearInput" name="yearInput" class="form-control" placeholder="填写将要添加的年" autofocus="autofocus" value="${year}-${month}" readonly />
                                 </div>
                             </div>
                         </div>
@@ -91,39 +93,38 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <select id="daysSelect" name="daysSelect" class="form-control select2">
-                                    <option value="1">1号</option>
-                                    <option value="2">2号</option>
-                                    <option value="3">3号</option>
-                                    <option value="4">4号</option>
-                                    <option value="5">5号</option>
-                                    <option value="6">6号</option>
-                                    <option value="7">7号</option>
-                                    <option value="8">8号</option>
-                                    <option value="9">9号</option>
-                                    <option value="10">10号</option>
-                                    <option value="11">11号</option>
-                                    <option value="12">12号</option>
-                                    <option value="13">13号</option>
-                                    <option value="14">14号</option>
-                                    <option value="15">15号</option>
-                                    <option value="16">16号</option>
-                                    <option value="17">17号</option>
-                                    <option value="18">18号</option>
-                                    <option value="19">19号</option>
-                                    <option value="20">20号</option>
-                                    <option value="21">21号</option>
-                                    <option value="22">22号</option>
-                                    <option value="23">23号</option>
-                                    <option value="24">24号</option>
-                                    <option value="25">25号</option>
-                                    <option value="26">26号</option>
-                                    <option value="27">27号</option>
-                                    <option value="28">28号</option>
-                                    <option value="29">29号</option>
-                                    <option value="30">30号</option>
-                                    <option value="31">31号</option>
+                                    <option value="1" <c:if test="${eventDay.day ==1}">selected</c:if> >1号</option>
+                                    <option value="2" <c:if test="${eventDay.day ==2}">selected</c:if> >2号</option>
+                                    <option value="3" <c:if test="${eventDay.day ==3}">selected</c:if> >3号</option>
+                                    <option value="4" <c:if test="${eventDay.day ==4}">selected</c:if> >4号</option>
+                                    <option value="5" <c:if test="${eventDay.day ==5}">selected</c:if> >5号</option>
+                                    <option value="6" <c:if test="${eventDay.day ==6}">selected</c:if> >6号</option>
+                                    <option value="7" <c:if test="${eventDay.day ==7}">selected</c:if> >7号</option>
+                                    <option value="8" <c:if test="${eventDay.day ==8}">selected</c:if> >8号</option>
+                                    <option value="9" <c:if test="${eventDay.day ==9}">selected</c:if> >9号</option>
+                                    <option value="10" <c:if test="${eventDay.day ==10}">selected</c:if> >10号</option>
+                                    <option value="11" <c:if test="${eventDay.day ==11}">selected</c:if> >11号</option>
+                                    <option value="12" <c:if test="${eventDay.day ==12}">selected</c:if> >12号</option>
+                                    <option value="13" <c:if test="${eventDay.day ==13}">selected</c:if> >13号</option>
+                                    <option value="14" <c:if test="${eventDay.day ==14}">selected</c:if> >14号</option>
+                                    <option value="15" <c:if test="${eventDay.day ==15}">selected</c:if> >15号</option>
+                                    <option value="16" <c:if test="${eventDay.day ==16}">selected</c:if> >16号</option>
+                                    <option value="17" <c:if test="${eventDay.day ==17}">selected</c:if> >17号</option>
+                                    <option value="18" <c:if test="${eventDay.day ==18}">selected</c:if> >18号</option>
+                                    <option value="19" <c:if test="${eventDay.day ==19}">selected</c:if> >19号</option>
+                                    <option value="20" <c:if test="${eventDay.day ==20}">selected</c:if> >20号</option>
+                                    <option value="21" <c:if test="${eventDay.day ==21}">selected</c:if> >21号</option>
+                                    <option value="22" <c:if test="${eventDay.day ==22}">selected</c:if> >22号</option>
+                                    <option value="23" <c:if test="${eventDay.day ==23}">selected</c:if> >23号</option>
+                                    <option value="24" <c:if test="${eventDay.day ==24}">selected</c:if> >24号</option>
+                                    <option value="25" <c:if test="${eventDay.day ==25}">selected</c:if> >25号</option>
+                                    <option value="26" <c:if test="${eventDay.day ==26}">selected</c:if> >26号</option>
+                                    <option value="27" <c:if test="${eventDay.day ==27}">selected</c:if> >27号</option>
+                                    <option value="28" <c:if test="${eventDay.day ==28}">selected</c:if> >28号</option>
+                                    <option value="29" <c:if test="${eventDay.day ==29}">selected</c:if> >29号</option>
+                                    <option value="30" <c:if test="${eventDay.day ==30}">selected</c:if> >30号</option>
+                                    <option value="31" <c:if test="${eventDay.day ==31}">selected</c:if> >31号</option>
                                 </select>
-                                <span class="help-block">请选择月</span>
                             </div>
                         </div>
                     </div>
@@ -138,10 +139,11 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <select id="modelSelect" name="modelSelect" class="form-control select2">
-                                        <option value="0">图片</option>
-                                        <option value="1">文本</option>
+                                        <option value="1" <c:if test="${eventDay.type ==1}">selected</c:if> >小文本</option>
+                                        <option value="2" <c:if test="${eventDay.type ==2}">selected</c:if> >大文本</option>
+                                        <option value="3" <c:if test="${eventDay.type ==3}">selected</c:if> >小图片</option>
+                                        <option value="4" <c:if test="${eventDay.type ==4}">selected</c:if> >大图片</option>
                                     </select>
-                                    <span class="help-block">请选择模块</span>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +157,7 @@
                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">事件图片：</label>
                             <div class="col-lg-5 col-md-5">
                                 <input name="file" type="file" class="" id="filestyle-1" style="position: fixed; left: -500px;" ><div class="bootstrap-filestyle" style="display: inline;"> <label for="filestyle-1" class="btn btn-primary"><i class="fa-plus-sign"></i> <span>Select file</span></label></div>
-                                <input type="hidden" name="eventsPath" id="eventsPath" value=""/>
+                                <input type="hidden" name="eventsPath" id="eventsPath" value="${eventDay.picUrl}"/>
                                 <input type="button" value="上传" />
                                 <progress></progress>
                                 <span class="jsrz_main_check"></span>
@@ -167,21 +169,21 @@
                     </div>
                 </div>
             </form>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 col-md-2 col-sm-12 control-label">Color picker</label>
-                        <div class="col-lg-10 col-md-10">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4">
-                                    <input class="form-control" id="color-picker" >
-                                    <span class="help-block">Predefined color</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%--<div class="row">--%>
+                <%--<div class="col-md-12">--%>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-lg-2 col-md-2 col-sm-12 control-label">Color picker</label>--%>
+                        <%--<div class="col-lg-10 col-md-10">--%>
+                            <%--<div class="row">--%>
+                                <%--<div class="col-lg-4 col-md-4">--%>
+                                    <%--<input class="form-control" id="color-picker" >--%>
+                                    <%--<span class="help-block">${eventDay.color}</span>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -189,7 +191,7 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                            <input type="text" id="colorVal" name="colorVal" class="form-control" placeholder="主标题" autofocus="autofocus" value="" />
+                            <input type="text" id="colorVal" name="colorVal" class="form-control" placeholder="主标题" autofocus="autofocus" value="${eventDay.color}" />
                                 </div>
                             </div>
                         </div>
@@ -203,7 +205,7 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                            <input type="text" id="tital" name="tital" class="form-control" placeholder="主标题" autofocus="autofocus" value="" />
+                            <input type="text" id="tital" name="tital" class="form-control" placeholder="主标题" autofocus="autofocus" value="${eventDay.titleCn}" />
                         </div>
                     </div>
                         </div>
@@ -217,7 +219,7 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                            <input type="text" id="titalEn" name="titalEn" class="form-control" placeholder="主标题" autofocus="autofocus" value="" />
+                            <input type="text" id="titalEn" name="titalEn" class="form-control" placeholder="主标题" autofocus="autofocus" value="${eventDay.titleEn}" />
                         </div>
                         </div>
                         </div>
@@ -231,7 +233,7 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                            <textarea id="contents" name="contents" class="form-control" rows="3"></textarea>
+                            <textarea id="contents" name="contents" class="form-control" rows="3">${eventDay.contentCn}</textarea>
                         </div>
                         </div>
                         </div>
@@ -245,7 +247,7 @@
                         <div class="col-lg-10 col-md-10">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                            <textarea id="contentsEn" name="contentsEn" class="form-control" rows="3"></textarea>
+                            <textarea id="contentsEn" name="contentsEn" class="form-control" rows="3">${eventDay.contentEn}</textarea>
                         </div>
                         </div>
                         </div>
@@ -259,7 +261,7 @@
                         <div class="col-lg-10 col-md-10">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                        <input class="form-control datetime-picker2" name="timeVal" type="text" value="">
+                        <input class="form-control datetime-picker2" name="timeVal" type="text" value="${eventDay.time}">
                         <span class="input-group-addon"><i class="fa-calendar"></i></span>
                     </div>
                     </div>
@@ -398,8 +400,9 @@
                     $('.jsrz_main_check').html('保存成功');
                     $(".jsrz_main_check").css("color","green");
                     // 设置 月份ID
-                    alert(result.dataObject);
-                    monthId=result.dataObject;
+                    // alert(result.dataObject);
+                    // monthId=result.dataObject;
+                    window.location.href = CTX_PATH + '/toEvents';
                 } else {
                     $('.jsrz_main_check').html(result.errorDescription);
                     $(".jsrz_main_check").css("color","red");
