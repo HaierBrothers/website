@@ -42,6 +42,7 @@ public class EventsPageController {
         }else{
             request.setAttribute("eventMonth",eventMonth);
         }
+        request.setAttribute("monthList",monthList);
         return "events/events";
     }
 

@@ -392,11 +392,7 @@
             url: CTX_PATH+'/submitEventsDays',
             data:params,
             success: function (result) {
-                alert(result.code == 0);
-                alert(result.dataObject);
-                alert(result.errorDescription);
                 if (result.code == 0) {
-                    alert(result.code );
                     $('.jsrz_main_check').html('保存成功');
                     $(".jsrz_main_check").css("color","green");
                     // 设置 月份ID

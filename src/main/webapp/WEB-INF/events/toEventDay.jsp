@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="row">
     <!-- Start .row -->
     <div class="col-lg-12">
         <!-- col-lg-12 start here -->
@@ -84,4 +83,3 @@
         <!-- End .panel -->
     </div>
     <!-- col-lg-12 end here -->
-</div>

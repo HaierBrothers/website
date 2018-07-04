@@ -93,13 +93,6 @@
 <div id="content">
     <!-- Start .content-wrapper -->
     <div class="content-wrapper">
-        <div class="row">
-            <!-- Start .row -->
-            <!-- Start .page-header -->
-            <!-- End .page-header -->
-        </div>
-        <!-- End .row -->
-        <!-- Page start here ( usual with .row ) -->
         <div class="outlet">
             <!-- Start .outlet -->
             <div class="row">
@@ -107,31 +100,45 @@
                     <div class="col-md-8">
                         <h1 class="page-header"><i class="en-upload"></i> <span>${eventMonth.year}</span> <span> ${eventMonth.month}</span>  </h1>
                         </ul>
+                        <select id="selectMonth">
+                            <c:forEach items="${monthList}" var="month">
+                                <option value="${month.sid}" <c:if test="${eventMonth.sid == month.sid}">selected</c:if> > ${month.year}-${month.month}</option>
+                            </c:forEach>
+                        </select>
                     </div>
-                        <div class="col-md-4">
-                            <div class="form-group page-header">
-                                <button id="toAddMonthBtn" class="btn btn-primary start">
-                                    <span>添加月</span>
-                                </button>
-                            </div>
-                            <div class="form-group page-header">
-                                <button id="toAddDayBtn" date-monthId="${eventMonth.sid}" class="btn btn-primary start">
-                                    <span>添加天</span>
-                                </button>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="form-group page-header">
+                            <button id="toAddMonthBtn" class="btn btn-primary start">
+                                <span>添加月</span>
+                            </button>
                         </div>
+                        <div class="form-group page-header">
+                            <button id="toAddDayBtn" date-monthId="${eventMonth.sid}" class="btn btn-primary start">
+                                <span>添加天</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <%-- tables --%>
-            <c:if test="${! empty eventMonth}">
-                <jsp:include page="/toDay?monthId=${eventMonth.sid}" flush="true"/>
-            </c:if>
-            <c:if test="${empty eventMonth}">
-                <jsp:include page="/toDay" flush="true"/>
-            </c:if>
+            <div class="row" id="pagediv">
+                <c:if test="${! empty eventMonth}">
+                    <jsp:include page="/toDay?monthId=${eventMonth.sid}" flush="true"/>
+                </c:if>
+                <c:if test="${empty eventMonth}">
+                    <jsp:include page="/toDay" flush="true"/>
+                </c:if>
+            </div>
             <!-- End .row -->
             <!-- Page End here -->
+        </div>
+        <!-- End .row -->
+        <!-- Page start here ( usual with .row ) -->
+        <div class="row">
+            <!-- Start .row -->
+            <!-- Start .page-header -->
+            <!-- End .page-header -->
         </div>
         <!-- End .outlet -->
     </div>
@@ -214,6 +221,22 @@
         var monthId = $(this).attr("data-monthId");
         window.location.href = CTX_PATH+"/toAddEventsDays?dayId="+dayId+"&monthId="+monthId;
     });
+    $("#selectMonth").bind("change",function () {
+        var monthId = $(this).find("option:selected").val();
+        $("#toAddDayBtn").attr("date-monthId",monthId);
+        getDayHtml(monthId);
+
+    });
+    var getDayHtml = function(monthId){
+        alert(monthId)
+        $.ajax({
+            type:"get",
+            url:CTX_PATH+'/toDay?monthId=' + monthId,
+            success: function (result) {
+                $("#pagediv").html(result)
+            }
+        })
+    };
     $(".cancelBtn").bind("click",function(){
         var dayId = $(this).attr("data-dayId");
         var monthId = $(this).attr("data-monthId");
