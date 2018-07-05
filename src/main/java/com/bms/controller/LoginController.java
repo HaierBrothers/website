@@ -12,6 +12,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -80,27 +81,36 @@ public class LoginController {
         String userName = request.getParameter("UserName");
         String password = request.getParameter("password");
         String verifyCode = request.getParameter("verifyCode");
-        // 验证验证码
-        String sessionCode = request.getSession().getAttribute("code").toString();
-        if (verifyCode == null && "".equals(verifyCode) && sessionCode == null && "".equals(sessionCode)) {
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入验证码");
+        boolean isLogin = false;
+        try{
+            // 验证验证码
+            String sessionCode = request.getSession().getAttribute("code").toString();
+            if (verifyCode == null && "".equals(verifyCode) && sessionCode == null && "".equals(sessionCode)) {
+                return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入验证码");
+            }
+            if (!verifyCode.equalsIgnoreCase(sessionCode)) {
+                return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"验证码错误");
+            }
+            if(StringUtils.isEmpty(userName)){
+                return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入用户名");
+            }
+            if(StringUtils.isEmpty(password)){
+                return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入密码");
+            }
+            Example example = new Example(User.class);
+            Example.Criteria criteria = example.createCriteria();
+            criteria.andEqualTo("userName",userName);
+            List<User> selectUser = userMapper.selectByExample(example);
+            if(CollectionUtils.isEmpty(selectUser)){
+                return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"登陆失败，没有该用户");
+            }
+            isLogin = true;
+            return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"登陆成功");
+        }finally {
+            // 登陆成功
+            HttpSession session = request.getSession();
+            session.setAttribute("ISLOGIN", isLogin);
         }
-        if (!verifyCode.equalsIgnoreCase(sessionCode)) {
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"验证码错误");
-        }
-        if(StringUtils.isEmpty(userName)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入用户名");
-        }
-        if(StringUtils.isEmpty(password)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"请输入密码");
-        }
-        User user = new User();
-        user.setAccount(userName);
-        List<User> selectUser = userMapper.select(user);
-        if(CollectionUtils.isEmpty(selectUser)){
-            return RestModel.getRestModel(BllConstantEnum.RESCODE_10,"登陆失败，没有该用户");
-        }
-        return RestModel.getRestModel(BllConstantEnum.RESCODE_0,"登陆成功");
     }
 
 

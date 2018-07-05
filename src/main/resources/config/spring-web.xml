@@ -46,6 +46,17 @@
         </property>
     </bean>
 
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 配置登陆拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/toLogin"/>
+            <mvc:exclude-mapping path="/verifyCode"/>
+            <bean class="com.bms.interceptor.AuthInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 默认访问跳转到登录页面(即定义无需Controller的url<->view直接映射) -->
     <!-- <mvc:view-controller path="/" view-name="forward:/index.jsp"/>-->
 

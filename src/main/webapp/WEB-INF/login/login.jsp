@@ -105,7 +105,6 @@
                 url: CTX_PATH+'/login',
                 data:params,
                 success: function (result) {
-                    alert(reslut);
                     if(undefined == result){
                         $('.jsrz_main_check').html("服务异常，请稍后再试");
                         $(".jsrz_main_check").css("color","red");
@@ -113,7 +112,7 @@
                         if (result.code == 0) {
                             $('.jsrz_main_check').html('登陆成功');
                             $(".jsrz_main_check").css("color","green");
-                            window.location.href = "/toCryptocurrency";
+                            window.location.href = CTX_PATH+"/toCryptocurrency";
                         } else {
                             $('.jsrz_main_check').html(result.errorDescription);
                             $(".jsrz_main_check").css("color","red");
